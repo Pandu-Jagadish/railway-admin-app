@@ -20,7 +20,7 @@ const AddTrainForm = () => {
     e.preventDefault();
     console.log(formData);
     try {
-      await axios.post("http://localhost:5000/api/trains", formData);
+      await axios.post("http://localhost:5001/api/trains", formData);
       alert("Train added successfully!");
       setFormData({
         name: "",

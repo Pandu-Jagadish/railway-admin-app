@@ -10,7 +10,7 @@ const TrainList = () => {
   useEffect(() => {
     const fetchTrains = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/trains");
+        const response = await axios.get("http://localhost:5001/api/trains");
         setTrains(response.data);
       } catch (error) {
         console.error("Failed to fetch trains:", error);
@@ -22,12 +22,12 @@ const TrainList = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/api/trains/${id}`);
+      await axios.delete(`http://localhost:5001/api/trains/${id}`);
       setTrains(trains.filter((train) => train._id !== id));
       alert("Train deleted successfully!");
 
       // Refetch the updated train list
-      const response = await axios.get("http://localhost:5000/api/trains");
+      const response = await axios.get("http://localhost:5001/api/trains");
       setTrains(response.data);
     } catch (error) {
       console.error("Failed to delete train:", error);
@@ -47,14 +47,14 @@ const TrainList = () => {
   const handleSave = async () => {
     try {
       await axios.put(
-        `http://localhost:5000/api/trains/${editTrain._id}`,
+        `http://localhost:5001/api/trains/${editTrain._id}`,
         editTrain
       );
       setEditTrain(null);
       alert("Train updated successfully!");
 
       // Refetch the updated train list
-      const response = await axios.get("http://localhost:5000/api/trains");
+      const response = await axios.get("http://localhost:5001/api/trains");
       setTrains(response.data);
     } catch (error) {
       console.error("Failed to update train:", error);
